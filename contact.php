@@ -45,47 +45,92 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BlueWave | Portal</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         :root {
+            --navy:       #0a1c3b;
+            --navy-deep:  #060f22;
+            --navy-mid:   #112d5e;
+            --navy-light: #1a3f7a;
+            --gold:       #c9a84c;
+            --white:      #ffffff;
+            --off-white:  #f4f6fb;
+            --text-muted: #a8b4cc;
             --primary: #0a1c3b;
             --accent: #c9a84c;
-            --white: #ffffff;
             --bg: #f4f7f6;
         }
 
-        body { font-family: 'Segoe UI', sans-serif; margin: 0; background: var(--bg); }
+        body { font-family: 'Jost', sans-serif; margin: 0; background: var(--bg); }
 
-        /* --- HEADER (Like homepage.php) --- */
-        .main-header {
-            background: var(--primary);
-            padding: 20px 8%;
+        /* ── NAVBAR ── */
+        nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 999;
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            justify-content: space-between;
+            padding: 0 60px;
+            height: 72px;
+            background: var(--navy-deep);
+            border-bottom: 1px solid rgba(255,255,255,0.08);
         }
 
-        .logo {
-            font-size: 24px;
-            font-weight: bold;
+        .nav-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
             color: var(--white);
+            letter-spacing: 1px;
             text-decoration: none;
-            text-transform: uppercase;
         }
 
-        .logo span { color: var(--accent); }
+        .nav-logo span { color: var(--gold); }
+
+        .nav-links {
+            display: flex;
+            gap: 36px;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-links li {
+            list-style: none;
+        }
 
         .nav-links a {
-            color: var(--white);
-            text-decoration: none;
-            margin-left: 30px;
+            font-size: 0.85rem;
             font-weight: 500;
-            transition: 0.3s;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.25s;
         }
 
-        .nav-links a:hover, .nav-links a.active {
-            color: var(--accent);
+        .nav-links a:hover,
+        .nav-links a.active { color: var(--white); }
+        .nav-links a.active { border-bottom: 2px solid var(--gold); padding-bottom: 2px; }
+
+        .nav-cta {
+            background: transparent;
+            border: 1px solid var(--gold);
+            color: var(--gold);
+            padding: 9px 24px;
+            border-radius: 2px;
+            font-family: 'Jost', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: background 0.25s, color 0.25s;
+            text-decoration: none;
         }
+
+        .nav-cta:hover { background: var(--gold); color: var(--navy-deep); }
 
         /* --- HERO SECTION --- */
         .hero {
@@ -99,6 +144,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
             justify-content: center;
             align-items: center;
             color: var(--white);
+            margin-top: 72px;
         }
 
         .hero h1 { margin: 0; font-size: 2.5rem; color: var(--accent); }
@@ -169,21 +215,29 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
             margin-top: 50px;
             border-top: 4px solid var(--accent);
         }
+
+        /* ── RESPONSIVE NAVBAR ── */
+        @media (max-width: 768px) {
+            nav { padding: 0 24px; }
+            .nav-links { display: none; }
+        }
     </style>
 </head>
 <body>
 
-    <header class="main-header">
-        <a href="homepage.php" class="logo">Blue<span>Wave</span></a>
-        <nav class="nav-links">
-            <a href="homepage.php">Home</a>
-            <a href="booking.php">Bookings</a>
-            <a href="user_complain.php">Complaints</a>
-            <a href="contact.php" class="active">Contact</a>
-            
-            
-        </nav>
-    </header>
+    <!-- NAVBAR -->
+    <nav>
+        <a href="homepage.php" class="nav-logo">Blue<span>Wave</span></a>
+        <ul class="nav-links">
+            <li><a href="homepage.php">Home</a></li>
+            <li><a href="rooms.php">Rooms</a></li>
+            <li><a href="homepage.php">Services</a></li>
+            <li><a href="homepage.php">About</a></li>
+            <li><a href="contact.php" class="active">Contact</a></li>
+            <li><a href="user_complain.php">Complaints</a></li>
+        </ul>
+        <a href="booking.php" class="nav-cta">Book Now</a>
+    </nav>
 
     <section class="hero">
         <h1>Support Center</h1>

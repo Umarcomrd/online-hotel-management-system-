@@ -20,8 +20,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $confirm_pass = $_POST['confirm_password']  ?? '';
     $admin_code   = trim($_POST['admin_code']   ?? '');
 
+    
     // Secret registration code — change this to whatever you want
     $valid_code = 'BLUEWAVE2024';
+    
 
     if (empty($full_name) || empty($email) || empty($phone_number) || empty($password) || empty($admin_code)) {
         $error = "All fields are required.";
@@ -31,7 +33,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $error = "Password must be at least 6 characters.";
     } elseif ($password !== $confirm_pass) {
         $error = "Passwords do not match.";
-
 
     } elseif ($admin_code !== $valid_code) {
         $error = "Invalid admin registration code.";
