@@ -51,6 +51,7 @@ if (isset($nameParts[1])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?= htmlspecialchars($user['name'] ?? 'User Profile') ?> - BlueWave Admin</title>
+    <link rel="stylesheet" href="admin_style.css">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -64,40 +65,6 @@ if (isset($nameParts[1])) {
             --danger:    #c62828;
             --danger-bg: #fff0f0;
         }
-
-        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-
-        body {
-            font-family: 'Jost', sans-serif;
-            background-color: var(--off-white);
-            min-height: 100vh;
-        }
-
-        /* SIDEBAR STYLES */
-        .sidebar {
-            width: 250px;
-            height: 100vh;
-            background: #060f22;
-            position: fixed;
-            left: 0;
-            top: 0;
-            padding: 30px 20px;
-            z-index: 1000;
-        }
-
-        .sidebar h2 { color: white; font-family: 'Playfair Display', serif; margin-bottom: 40px; font-size: 1.7rem; }
-        .sidebar h2 span { color: var(--gold); }
-        .sidebar-nav { list-style: none; }
-        .sidebar-nav li { margin-bottom: 10px; }
-        .sidebar-nav a {
-            display: block; padding: 14px 18px; color: #dbe1ea; text-decoration: none;
-            font-family: 'Jost', sans-serif; font-weight: 500; transition: 0.2s; border-radius: 4px;
-        }
-        .sidebar-nav a:hover { background: #0d1b3d; color: white; }
-        .sidebar-nav a.active { background: #c9a84c; color: #060f22; font-weight: 700; }
-
-        /* MAIN CONTENT */
-        .main-content { margin-left: 250px; padding: 40px; }
 
         /* BREADCRUMB */
         .breadcrumb { padding: 0 0 24px 0; font-size: 0.85rem; color: var(--text-body); display: flex; align-items: center; gap: 8px; }
@@ -243,7 +210,7 @@ if (isset($nameParts[1])) {
 </div>
 
 <aside class="sidebar">
-    <h2>Blue<span>Wave</span> Admin</h2>
+    <h2>BlueWave Admin</h2>
     <ul class="sidebar-nav">
         <li><a href="dashboard.php">Dashboard</a></li>
         <li><a href="view_bookings.php">Bookings</a></li>
