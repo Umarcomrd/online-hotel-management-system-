@@ -55,6 +55,7 @@ Admin registration requires a secret access code to prevent unauthorized signups
 
 ## Project Structure
 
+```
 hotel/
 ├── admin/                  # Admin panel (protected by auth.php session guard)
 │   ├── add-room.php
@@ -92,7 +93,7 @@ hotel/
 ├── reset-password.php
 ├── rooms.php
 └── user_complain.php
-
+```
 ## License
 
 This project is for educational purposes.
