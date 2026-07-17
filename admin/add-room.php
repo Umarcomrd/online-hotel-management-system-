@@ -36,7 +36,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $ext        = pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION);
                 $filename   = 'room_' . uniqid() . '.' . $ext;
             
-                $upload_dir = '/opt/lampp/htdocs/hotel/uploads/rooms/';
+                $upload_dir = '/opt/lampp/htdocs/hotel/online-hotel-management-system-/uploads/rooms/';
  
                 if (!is_dir($upload_dir)) {
                     mkdir($upload_dir, 0755, true);
