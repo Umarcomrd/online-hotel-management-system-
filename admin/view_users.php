@@ -24,6 +24,25 @@ try {
     <link rel="stylesheet" href="new_admin.css">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Jost:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
+
+
+:root {
+    --gold: #c9a84c;
+    --text-main: #f4f7f9;
+}
+
+.admin-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-main);
+    margin-bottom: 30px;
+    padding-left: 10px;
+    letter-spacing: 0.5px;
+}
+.admin-logo span {
+    color: var(--gold);
+}
         /* Responsive Grid Configuration for exact 3 columns */
         .directory-grid {
             display: grid;

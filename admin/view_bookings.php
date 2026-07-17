@@ -43,6 +43,23 @@ $bookings = $stmt->fetchAll(PDO::FETCH_ASSOC);
         /* ==========================================================================
            BlueWave Admin Bookings Combined Grid & Table Styling
            ========================================================================== */
+           :root {
+    --gold: #c9a84c;
+    --text-main: #f4f7f9;
+}
+
+.admin-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-main);
+    margin-bottom: 30px;
+    padding-left: 10px;
+    letter-spacing: 0.5px;
+}
+.admin-logo span {
+    color: var(--gold);
+}
 
         .main-content {
             padding: 30px;

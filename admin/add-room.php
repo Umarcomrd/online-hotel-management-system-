@@ -84,6 +84,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             --text-body: #4a5a75;
             --border:    #d0daf0;
         }
+
+
+        :root {
+    --gold: #c9a84c;
+    --text-main: #f4f7f9;
+}
+
+.admin-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-main);
+    margin-bottom: 30px;
+    padding-left: 10px;
+    letter-spacing: 0.5px;
+}
+.admin-logo span {
+    color: var(--gold);
+}
  
         /* BREADCRUMB */
         .breadcrumb {
