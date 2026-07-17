@@ -21,6 +21,7 @@ try {
     <title>Manage Users - BlueWave Admin</title>
 
     <link rel="stylesheet" href="admin_style.css">
+    <link rel="stylesheet" href="new_admin.css">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Jost:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
         /* Responsive Grid Configuration for exact 3 columns */
@@ -47,7 +48,7 @@ try {
 </head>
 <body>
      <aside class="sidebar">
-        <h2>BlueWave Admin</h2>
+        <div class="admin-logo">BlueWave <span>Admin</span></div>
         <ul class="sidebar-nav">
             <li><a href="dashboard.php">Dashboard</a></li>
             <li><a href="view_bookings.php">Bookings</a></li>
@@ -55,8 +56,10 @@ try {
             <li><a href="view_users.php" class="active">Users</a></li>
             <li><a href="manage_complaints.php">Complaints</a></li>
             <li><a href="add-room.php">Add rooms</a></li>
-            <li style="margin-top: 50px;"><a href="../login.php">Logout</a></li>
         </ul>
+        <div class="sidebar-footer">
+            <a href="../login.php">Log Out</a>
+        </div>
     </aside>
     
     <main class="main-content">

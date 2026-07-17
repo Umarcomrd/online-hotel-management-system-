@@ -1,17 +1,17 @@
 <?php
 // admin/add-room.php
-
+ 
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 require_once '../confiq.php';   // DB connection
 $error   = '';
 $success = '';
-
-
-
+ 
+ 
+ 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-
+ 
     $room_name   = trim($_POST['room_name']   ?? '');
     $price       = trim($_POST['price']       ?? '');
     $description = trim($_POST['description'] ?? '');
@@ -21,13 +21,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $error = "All fields are required.";
     } elseif (!is_numeric($price) || $price <= 0) {
         $error = "Please enter a valid price.";
-
+ 
     } else {
         if (!empty($_FILES['image']['name'])) {
             $allowed_types = ['image/jpeg', 'image/png', 'image/webp'];
             $file_type     = mime_content_type($_FILES['image']['tmp_name']);
             $max_size      = 2 * 1024 * 1024;
-
+ 
             if (!in_array($file_type, $allowed_types)) {
                 $error = "Only JPG, PNG, or WEBP images are allowed.";
             } elseif ($_FILES['image']['size'] > $max_size) {
@@ -37,11 +37,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $filename   = 'room_' . uniqid() . '.' . $ext;
             
                 $upload_dir = '/opt/lampp/htdocs/hotel/uploads/rooms/';
-
+ 
                 if (!is_dir($upload_dir)) {
                     mkdir($upload_dir, 0755, true);
                 }
-
+ 
                 if (move_uploaded_file($_FILES['image']['tmp_name'], $upload_dir . $filename)) {
                     $image_path = '../uploads/rooms/' . $filename;
                 } else {
@@ -52,7 +52,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         } else {
             $error = "Please upload a room image.";
         }
-
+ 
         if (empty($error)) {
             $stmt = $pdo->prepare("
                 INSERT INTO rooms (room_name, price, image, description, status)
@@ -72,6 +72,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add Room – BlueWave Admin</title>
     <link rel="stylesheet" href="admin_style.css">
+    <link rel="stylesheet" href="new_admin.css">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -83,7 +84,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             --text-body: #4a5a75;
             --border:    #d0daf0;
         }
-
+ 
         /* BREADCRUMB */
         .breadcrumb {
             padding: 0 0 24px 0;
@@ -93,24 +94,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             align-items: center;
             gap: 8px;
         }
-
+ 
         .breadcrumb a { color: var(--text-body); text-decoration: none; transition: color .2s; }
         .breadcrumb a:hover { color: var(--gold); }
         .breadcrumb span { color: var(--navy); font-weight: 600; }
         .breadcrumb .sep { opacity: .4; }
-
+ 
         /* PAGE CONTENT */
         .page-header { margin-bottom: 32px; }
-
+ 
         .page-header h1 {
             font-family: 'Playfair Display', serif;
             font-size: 2.2rem;
             color: var(--navy);
             margin-bottom: 6px;
         }
-
+ 
         .page-header p { font-size: 0.9rem; color: var(--text-body); }
-
+ 
         /* CARD */
         .card {
             background: var(--white);
@@ -118,7 +119,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             box-shadow: 0 2px 16px rgba(10,28,59,.07);
             overflow: hidden;
         }
-
+ 
         .card-header {
             padding: 20px 32px;
             border-bottom: 1px solid var(--border);
@@ -126,7 +127,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             align-items: center;
             gap: 12px;
         }
-
+ 
         .card-icon {
             width: 40px;
             height: 40px;
@@ -137,14 +138,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             justify-content: center;
             flex-shrink: 0;
         }
-
+ 
         .card-icon svg { width: 20px; height: 20px; fill: var(--gold); }
-
+ 
         .card-header h2 { font-family: 'Playfair Display', serif; font-size: 1.2rem; color: var(--navy); }
         .card-header p  { font-size: 0.8rem; color: var(--text-body); margin-top: 2px; }
-
+ 
         .card-body { padding: 32px; }
-
+ 
         /* ALERTS */
         .alert {
             padding: 13px 16px;
@@ -156,24 +157,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             align-items: flex-start;
             gap: 10px;
         }
-
+ 
         .alert svg { width: 18px; height: 18px; flex-shrink: 0; margin-top: 1px; }
         .alert-error   { background: #fdecea; color: #b71c1c; border-left: 3px solid #e53935; }
         .alert-success { background: #e8f5e9; color: #1b5e20; border-left: 3px solid #43a047; }
         .alert-error svg   { fill: #e53935; }
         .alert-success svg { fill: #43a047; }
-
+ 
         /* FORM GRID */
         .form-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 24px 32px;
         }
-
+ 
         .form-grid .full { grid-column: 1 / -1; }
-
+ 
         .form-group { display: flex; flex-direction: column; }
-
+ 
         .form-group label {
             font-size: 0.75rem;
             font-weight: 700;
@@ -182,7 +183,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             color: var(--navy);
             margin-bottom: 9px;
         }
-
+ 
         .form-group input,
         .form-group select,
         .form-group textarea {
@@ -196,17 +197,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             color: var(--navy);
             transition: border-color .25s, box-shadow .25s;
         }
-
+ 
         .form-group input:focus,
         .form-group select:focus,
         .form-group textarea:focus {
             border-color: var(--gold);
             box-shadow: 0 0 0 3px rgba(201,168,76,.12);
         }
-
+ 
         .form-group input::placeholder,
         .form-group textarea::placeholder { color: #b0bad0; }
-
+ 
         .form-group select {
             appearance: none;
             background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%234a5a75' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
@@ -215,9 +216,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             padding-right: 38px;
             cursor: pointer;
         }
-
+ 
         .form-group textarea { resize: vertical; min-height: 110px; line-height: 1.6; }
-
+ 
         /* Price prefix */
         .input-prefix { position: relative; }
         .input-prefix span {
@@ -231,7 +232,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             pointer-events: none;
         }
         .input-prefix input { padding-left: 34px; }
-
+ 
         /* Status dots */
         .status-dots { display: flex; gap: 16px; margin-top: 10px; flex-wrap: wrap; }
         .dot-item { display: flex; align-items: center; gap: 6px; font-size: 0.75rem; color: var(--text-body); }
@@ -239,7 +240,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         .dot.available   { background: #43a047; }
         .dot.booked      { background: #fb8c00; }
         .dot.maintenance { background: #e53935; }
-
+ 
         /* Upload zone */
         .upload-zone {
             border: 2px dashed var(--border);
@@ -251,12 +252,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             position: relative;
             background: var(--off-white);
         }
-
+ 
         .upload-zone:hover, .upload-zone.dragover {
             border-color: var(--gold);
             background: #fdf9ef;
         }
-
+ 
         .upload-zone input[type="file"] {
             position: absolute;
             inset: 0;
@@ -265,7 +266,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             width: 100%;
             height: 100%;
         }
-
+ 
         .upload-icon {
             width: 48px;
             height: 48px;
@@ -276,15 +277,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             justify-content: center;
             margin: 0 auto 14px;
         }
-
+ 
         .upload-icon svg { width: 22px; height: 22px; fill: var(--gold); }
         .upload-zone h4 { font-size: 0.95rem; color: var(--navy); font-weight: 600; margin-bottom: 5px; }
         .upload-zone p  { font-size: 0.8rem; color: var(--text-body); }
         .upload-zone .browse { color: var(--gold); font-weight: 700; }
-
+ 
         #preview-wrap { display: none; margin-top: 16px; position: relative; }
         #preview-wrap img { width: 100%; max-height: 200px; object-fit: cover; border-radius: 4px; border: 1px solid var(--border); }
-
+ 
         .remove-img {
             position: absolute;
             top: 8px;
@@ -302,9 +303,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             font-size: 1rem;
             transition: background .2s;
         }
-
+ 
         .remove-img:hover { background: #e53935; }
-
+ 
         /* Form footer */
         .form-footer {
             margin-top: 34px;
@@ -315,7 +316,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             align-items: center;
             gap: 14px;
         }
-
+ 
         .btn-cancel {
             padding: 13px 28px;
             background: transparent;
@@ -331,9 +332,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             border-radius: 3px;
             transition: .25s;
         }
-
+ 
         .btn-cancel:hover { border-color: var(--navy); color: var(--navy); }
-
+ 
         .btn-submit {
             padding: 13px 36px;
             background: var(--navy-deep);
@@ -351,10 +352,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             align-items: center;
             gap: 8px;
         }
-
+ 
         .btn-submit svg { width: 16px; height: 16px; fill: currentColor; }
         .btn-submit:hover { background: var(--gold); color: var(--navy-deep); }
-
+ 
         /* Responsive */
         @media (max-width: 992px) {
             .main-content { margin-left: 0; padding: 30px 20px; }
@@ -370,9 +371,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </style>
 </head>
 <body>
-
+ 
 <aside class="sidebar">
-    <h2>BlueWave Admin</h2>
+    <div class="admin-logo">BlueWave <span>Admin</span></div>
     <ul class="sidebar-nav">
         <li><a href="dashboard.php">Dashboard</a></li>
         <li><a href="view_bookings.php">Bookings</a></li>
@@ -380,12 +381,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <li><a href="view_users.php">Users</a></li>
         <li><a href="manage_complaints.php">Complaints</a></li>
         <li><a href="add-room.php" class="active">Add Rooms</a></li>
-        <li style="margin-top:50px;"><a href="logout.php">Logout</a></li>
     </ul>
+    <div class="sidebar-footer">
+        <a href="logout.php">Log Out</a>
+    </div>
 </aside>
-
+ 
 <main class="main-content">
-
+ 
     <div class="breadcrumb">
         <a href="dashboard.php">Dashboard</a>
         <span class="sep">›</span>
@@ -393,14 +396,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <span class="sep">›</span>
         <span>Add New Room</span>
     </div>
-
+ 
     <div class="page-wrapper-inner">
-
+ 
         <div class="page-header">
             <h1>Add New Room</h1>
             <p>Fill in the details below to list a new room on BlueWave Hotel.</p>
         </div>
-
+ 
         <div class="card">
             <div class="card-header">
                 <div class="card-icon">
@@ -413,32 +416,32 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <p>All fields are required to save the room.</p>
                 </div>
             </div>
-
+ 
             <div class="card-body">
-
+ 
                 <?php if ($error): ?>
                     <div class="alert alert-error">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>
                         <?= htmlspecialchars($error) ?>
                     </div>
                 <?php endif; ?>
-
+ 
                 <?php if ($success): ?>
                     <div class="alert alert-success">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 16.17 4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
                         <?= htmlspecialchars($success) ?>
                     </div>
                 <?php endif; ?>
-
+ 
                 <form method="POST" action="add-room.php" enctype="multipart/form-data">
                     <div class="form-grid">
-
+ 
                         <div class="form-group">
                             <label>Room Name</label>
                             <input type="text" name="room_name" placeholder="e.g. Deluxe Ocean Suite"
                                    value="<?= htmlspecialchars($_POST['room_name'] ?? '') ?>" required>
                         </div>
-
+ 
                         <div class="form-group">
                             <label>Price per Night (₦)</label>
                             <div class="input-prefix">
@@ -447,7 +450,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                        value="<?= htmlspecialchars($_POST['price'] ?? '') ?>" required>
                             </div>
                         </div>
-
+ 
                         <div class="form-group">
                             <label>Room Status</label>
                             <select name="status" required>
@@ -462,12 +465,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                 <div class="dot-item"><div class="dot maintenance"></div> Maintenance</div>
                             </div>
                         </div>
-
+ 
                         <div class="form-group">
                             <label>Description</label>
                             <textarea name="description" placeholder="Describe the room — amenities, view, bed type…" required><?= htmlspecialchars($_POST['description'] ?? '') ?></textarea>
                         </div>
-
+ 
                         <div class="form-group full">
                             <label>Room Image</label>
                             <div class="upload-zone" id="uploadZone">
@@ -480,15 +483,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                 <h4>Drag & drop your image here</h4>
                                 <p>or <span class="browse">browse files</span> &nbsp;·&nbsp; JPG, PNG, WEBP &nbsp;·&nbsp; Max 2MB</p>
                             </div>
-
+ 
                             <div id="preview-wrap">
                                 <img id="preview-img" src="" alt="Room preview">
                                 <button type="button" class="remove-img" id="removeImg" title="Remove image">✕</button>
                             </div>
                         </div>
-
+ 
                     </div>
-
+ 
                     <div class="form-footer">
                         <a href="view_rooms.php" class="btn-cancel">Cancel</a>
                         <button type="submit" class="btn-submit">
@@ -496,21 +499,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             Save Room
                     </button>
                     </div>
-
+ 
                 </form>
             </div>
         </div>
-
+ 
     </div>
 </main>
-
+ 
 <script>
     const input       = document.getElementById('imageInput');
     const zone        = document.getElementById('uploadZone');
     const previewWrap = document.getElementById('preview-wrap');
     const previewImg  = document.getElementById('preview-img');
     const removeBtn   = document.getElementById('removeImg');
-
+ 
     function showPreview(file) {
         if (!file) return;
         const reader = new FileReader();
@@ -521,16 +524,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         };
         reader.readAsDataURL(file);
     }
-
+ 
     input.addEventListener('change', () => showPreview(input.files[0]));
-
+ 
     removeBtn.addEventListener('click', () => {
         input.value = '';
         previewWrap.style.display = 'none';
         zone.style.display = 'block';
         previewImg.src = '';
     });
-
+ 
     zone.addEventListener('dragover', e => { e.preventDefault(); zone.classList.add('dragover'); });
     zone.addEventListener('dragleave', () => zone.classList.remove('dragover'));
     zone.addEventListener('drop', e => {
@@ -545,6 +548,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     });
 </script>
-
+ 
 </body>
-</html>
+</htm

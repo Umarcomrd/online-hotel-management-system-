@@ -1,4 +1,3 @@
-
 <?php
 // admin/view_profile.php
 require_once '../confiq.php';
@@ -52,6 +51,7 @@ if (isset($nameParts[1])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?= htmlspecialchars($user['name'] ?? 'User Profile') ?> - BlueWave Admin</title>
     <link rel="stylesheet" href="admin_style.css">
+    <link rel="stylesheet" href="new_admin.css">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -210,7 +210,7 @@ if (isset($nameParts[1])) {
 </div>
 
 <aside class="sidebar">
-    <h2>BlueWave Admin</h2>
+    <div class="admin-logo">BlueWave <span>Admin</span></div>
     <ul class="sidebar-nav">
         <li><a href="dashboard.php">Dashboard</a></li>
         <li><a href="view_bookings.php">Bookings</a></li>
@@ -218,8 +218,10 @@ if (isset($nameParts[1])) {
         <li><a href="view_users.php" class="active">Users</a></li>
         <li><a href="manage_complaints.php">Complaints</a></li>
         <li><a href="add-room.php">Add Rooms</a></li>
-        <li style="margin-top:50px;"><a href="logout.php">Logout</a></li>
     </ul>
+    <div class="sidebar-footer">
+        <a href="logout.php">Log Out</a>
+    </div>
 </aside>
 
 <main class="main-content">

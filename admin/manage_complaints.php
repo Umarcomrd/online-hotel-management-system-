@@ -4,26 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-
+ 
     <link rel="stylesheet" href="admin_style.css">
+    <link rel="stylesheet" href="new_admin.css">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Jost:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
      <aside class="sidebar">
-        <h2>BlueWave Admin</h2>
+        <div class="admin-logo">BlueWave <span>Admin</span></div>
         <ul class="sidebar-nav">
-            <li><a href="dashboard.php" class="active">Dashboard</a></li>
+            <li><a href="dashboard.php">Dashboard</a></li>
             <li><a href="view_bookings.php">Bookings</a></li>
             <li><a href="view_rooms.php">Rooms</a></li>
             <li><a href="view_users.php">Users</a></li>
+            <li><a href="manage_complaints.php" class="active">Complaints</a></li>
             <li><a href="add-room.php">Add rooms</a></li>
-            <li><a href="manage_complaints.php">Complaints</a></li>
-            <li style="margin-top: 50px;"><a href="../login.php">Logout</a></li>
         </ul>
+        <div class="sidebar-footer">
+            <a href="../login.php">Log Out</a>
+        </div>
     </aside>
     <main class="main-content">
         <h1 class="page-title">Guest Feedback & Issues</h1>
-
+ 
 <div class="complaint-grid" style="display: grid; gap: 20px;">
     <div class="card" style="border-left: 5px solid #ff4d4d;">
         <div style="display: flex; justify-content: space-between;">
@@ -35,7 +38,7 @@
     </div>
 </div>
     <h1 style="font-family: 'Playfair Display'; margin-bottom: 30px;">Guest Relations</h1>
-
+ 
     <div style="display: flex; gap: 20px; margin-bottom: 30px;">
         <div style="flex: 1; background: #fff; padding: 20px; border-top: 4px solid #ff4d4d;">
             <h3 style="color: #ff4d4d;">Pending (3)</h3>
@@ -47,7 +50,7 @@
             <h3 style="color: #2ecc71;">Resolved (42)</h3>
         </div>
     </div>
-
+ 
     <div style="background: white; padding: 25px; border-radius: 4px; margin-bottom: 15px; position: relative;">
         <span style="position: absolute; right: 20px; top: 20px; font-size: 0.8rem; color: #999;">2 hours ago</span>
         <h4 style="color: var(--navy-deep); margin-bottom: 10px;">Issue: Air Conditioning Failure</h4>

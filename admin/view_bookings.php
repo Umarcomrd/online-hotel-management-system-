@@ -36,6 +36,7 @@ $bookings = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BlueWave Admin – Bookings</title>
     <link rel="stylesheet" href="admin_style.css">
+    <link rel="stylesheet" href="new_admin.css">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Jost:wght@400;500;600&display=swap" rel="stylesheet">
     
     <style>
@@ -212,16 +213,18 @@ $bookings = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <body>
     <div class="admin-wrapper">
         <aside class="sidebar">
-            <h2>BlueWave Admin</h2>
+            <div class="admin-logo">BlueWave <span>Admin</span></div>
             <ul class="sidebar-nav">
                 <li><a href="dashboard.php">Dashboard</a></li>
                 <li><a href="view_bookings.php" class="active">Bookings</a></li>
                 <li><a href="view_rooms.php">Rooms</a></li>
                 <li><a href="view_users.php">Users</a></li>
-                <li><a href="add-room.php">Add rooms</a></li>
                 <li><a href="manage_complaints.php">Complaints</a></li>
-                <li style="margin-top: 50px;"><a href="../login.php">Logout</a></li>
+                <li><a href="add-room.php">Add rooms</a></li>
             </ul>
+            <div class="sidebar-footer">
+                <a href="../login.php">Log Out</a>
+            </div>
         </aside>
 
         <main class="main-content">
