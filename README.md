@@ -100,5 +100,4 @@ This project is for educational purposes.
 
 ## Author
 
-Umar
-
+UMAR BABAWURO ABUBAKAR
