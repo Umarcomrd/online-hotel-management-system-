@@ -55,14 +55,43 @@ Admin registration requires a secret access code to prevent unauthorized signups
 
 ## Project Structure
 
-```
 hotel/
-├── admin/          # Admin panel (protected by auth.php session guard)
-├── uploads/         # Room images
-├── booking_form.php # Combined date/guest booking form
-├── confiq.php        # Database configuration
-└── ...
-```
+├── admin/                  # Admin panel (protected by auth.php session guard)
+│   ├── add-room.php
+│   ├── admin_style.css
+│   ├── dashboard.php
+│   ├── edit_room.php
+│   ├── index.php
+│   ├── login.php
+│   ├── Logout.php
+│   ├── manage_complaints.php
+│   ├── new_admin.css
+│   ├── register.php
+│   ├── search_users.php
+│   ├── view_bookings.php
+│   ├── view_profile.php
+│   ├── view_rooms.php
+│   └── view_users.php
+├── css/
+│   └── style.css
+├── include/                # Shared header/footer/navbar partials
+│   ├── footer.php
+│   ├── header.php
+│   └── navbar.php
+├── uploads/
+│   └── rooms/               # Room images uploaded via admin panel
+├── booking.php
+├── booking_form.php         # Combined date/guest booking form
+├── confiq.php                # Database configuration
+├── contact.php
+├── homepage.php
+├── hotel.sql                 # Database schema/dump
+├── index.php
+├── login.php
+├── register.php
+├── reset-password.php
+├── rooms.php
+└── user_complain.php
 
 ## License
 
@@ -71,3 +100,4 @@ This project is for educational purposes.
 ## Author
 
 Umar
+
