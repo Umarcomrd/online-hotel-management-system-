@@ -77,7 +77,7 @@ try {
             <li><a href="add-room.php">Add rooms</a></li>
         </ul>
         <div class="sidebar-footer">
-            <a href="../login.php">Log Out</a>
+            <a href="login.php">Log Out</a>
         </div>
     </aside>
     
@@ -90,7 +90,7 @@ try {
                 <?php foreach($users as $user): ?>
                     <?php
                         // Dynamically extract initials from the user's name (e.g., John Doe -> JD)
-                        $nameParts = explode(' ', trim($user['name'] ?? 'User'));
+                        $nameParts = explode(' ', trim($user['full_name'] ?? 'User'));
                         $initials = strtoupper(substr($nameParts[0], 0, 1));
                         if (isset($nameParts[1])) {
                             $initials .= strtoupper(substr($nameParts[1], 0, 1));
@@ -103,7 +103,7 @@ try {
                         </div>
                         <div style="flex-grow: 1; min-width: 0;">
                             <h4 style="margin: 0; color: var(--navy-deep, #060f22); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
-                                <?= htmlspecialchars($user['name'] ?? 'Unknown User') ?>
+                                <?= htmlspecialchars($user['full_name'] ?? 'Unknown User') ?>
                             </h4>
                             <p style="margin: 0; font-size: 0.85rem; color: #888; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
                                 <?= htmlspecialchars($user['email'] ?? 'No email provided') ?>

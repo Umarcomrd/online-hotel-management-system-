@@ -38,7 +38,7 @@ try {
 }
 
 // Generate initials for the avatar
-$nameParts = explode(' ', trim($user['name'] ?? 'Unknown User'));
+$nameParts = explode(' ', trim($user['full_name'] ?? 'Unknown User'));
 $initials = strtoupper(substr($nameParts[0], 0, 1));
 if (isset($nameParts[1])) {
     $initials .= strtoupper(substr($nameParts[1], 0, 1));
@@ -49,7 +49,7 @@ if (isset($nameParts[1])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?= htmlspecialchars($user['name'] ?? 'User Profile') ?> - BlueWave Admin</title>
+    <title><?= htmlspecialchars($user['full_name'] ?? 'User Profile') ?> - BlueWave Admin</title>
     <link rel="stylesheet" href="admin_style.css">
     <link rel="stylesheet" href="new_admin.css">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -152,6 +152,24 @@ if (isset($nameParts[1])) {
             border-top: 1px solid var(--border);
         }
 
+        :root {
+    --gold: #c9a84c;
+    --text-main: #f4f7f9;
+}
+
+.admin-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-main);
+    margin-bottom: 30px;
+    padding-left: 10px;
+    letter-spacing: 0.5px;
+}
+.admin-logo span {
+    color: var(--gold);
+}
+
         .btn {
             padding: 12px 24px; border-radius: 4px; text-decoration: none; font-weight: 600;
             font-size: 0.9rem; transition: 0.2s; display: inline-block; cursor: pointer; border: none; font-family: 'Jost', sans-serif;
@@ -201,7 +219,7 @@ if (isset($nameParts[1])) {
 <div class="modal-overlay" id="deleteModal">
     <div class="modal-box">
         <h3>Delete User?</h3>
-        <p>Are you sure you want to delete <strong><?= htmlspecialchars($user['name'] ?? 'this user') ?></strong>? This action cannot be undone.</p>
+        <p>Are you sure you want to delete <strong><?= htmlspecialchars($user['full_name'] ?? 'this user') ?></strong>? This action cannot be undone.</p>
         <div class="modal-actions">
             <button class="modal-cancel" onclick="closeModal()">Cancel</button>
             <a href="view_profile.php?delete=<?= $user['id'] ?>" class="modal-confirm">Yes, Delete User</a>
@@ -243,7 +261,7 @@ if (isset($nameParts[1])) {
                     <?= htmlspecialchars($initials) ?>
                 </div>
                 <div class="profile-title">
-                    <h1><?= htmlspecialchars($user['name'] ?? 'Unknown') ?></h1>
+                    <h1><?= htmlspecialchars($user['full_name'] ?? 'Unknown') ?></h1>
                     <p>Registered Member</p>
                 </div>
             </div>
@@ -252,7 +270,7 @@ if (isset($nameParts[1])) {
                 <div>
                     <div class="info-group">
                         <label>Full Name</label>
-                        <div class="info-value"><?= htmlspecialchars($user['name'] ?? 'N/A') ?></div>
+                        <div class="info-value"><?= htmlspecialchars($user['full_name'] ?? 'N/A') ?></div>
                     </div>
                     
                     <div class="info-group">

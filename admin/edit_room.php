@@ -225,7 +225,23 @@ textarea.form-control {
     font-size: 0.92rem;
     transition: 0.2s;
 }
+:root {
+    --gold: #c9a84c;
+    --text-main: #f4f7f9;
+}
 
+.admin-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-main);
+    margin-bottom: 30px;
+    padding-left: 10px;
+    letter-spacing: 0.5px;
+}
+.admin-logo span {
+    color: var(--gold);
+}
 .btn-save:hover {
     background: var(--navy-mid);
 }
@@ -258,7 +274,7 @@ textarea.form-control {
 <body>
 
 <aside class="sidebar">
-    <h2>BlueWave Admin</h2>
+     <div class="admin-logo">BlueWave <span>Admin</span></div>
     <ul class="sidebar-nav">
         <li><a href="dashboard.php">Dashboard</a></li>
         <li><a href="view_bookings.php">Bookings</a></li>
