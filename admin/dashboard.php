@@ -117,15 +117,17 @@ $recent_activity = $stmt->fetchAll(PDO::FETCH_ASSOC);
         }
 
         .sidebar-nav a {
-            color: var(--text-muted);
-            text-decoration: none;
-            padding: 12px 15px;
-            display: flex;
-            align-items: center;
-            border-radius: 8px;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            font-size: 0.95rem;
-        }
+    color: var(--text-muted);
+    text-decoration: none;
+    padding: 12px 15px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border-radius: 8px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    font-size: 0.95rem;
+}
+
 
         .sidebar-nav a:hover, 
         .sidebar-nav a.active {
@@ -147,14 +149,16 @@ $recent_activity = $stmt->fetchAll(PDO::FETCH_ASSOC);
         }
 
         .sidebar-footer a {
-            color: var(--text-muted);
-            text-decoration: none;
-            font-size: 0.95rem;
-            padding: 12px 15px;
-            display: block;
-            border-radius: 8px;
-            transition: 0.3s;
-        }
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.95rem;
+    padding: 12px 15px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border-radius: 8px;
+    transition: 0.3s;
+}
         .sidebar-footer a:hover {
             background: rgba(239, 68, 68, 0.1);
             color: #ef4444;
@@ -520,49 +524,54 @@ $recent_activity = $stmt->fetchAll(PDO::FETCH_ASSOC);
             }
         }
 
-        @media (max-width: 768px) {
-            .sidebar { 
-                width: 70px; 
-                padding: 25px 10px; 
-            }
-            .sidebar-nav span, .admin-logo, .sidebar-footer span { 
-                display: none; 
-            }
-            .main-content { 
-                margin-left: 70px; 
-                width: calc(100% - 70px); 
-                padding: 20px;
-            }
-            .metrics-grid {
-                grid-template-columns: 1fr;
-            }
-            .top-header {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 15px;
-            }
-            .search-bar {
-                width: 100%;
-            }
-        }
+       @media (max-width: 768px) {
+    .sidebar { 
+        width: 70px; 
+        padding: 25px 10px; 
+    }
+    .sidebar-nav span, .admin-logo, .sidebar-footer span { 
+        display: none; 
+    }
+    .sidebar-nav a, .sidebar-footer a {
+        justify-content: center;
+        font-size: 1.3rem;
+    }
+    .main-content { 
+        margin-left: 70px; 
+        width: calc(100% - 70px); 
+        padding: 20px;
+    }
+    .metrics-grid {
+        grid-template-columns: 1fr;
+    }
+    .top-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+    .search-bar {
+        width: 100%;
+    }
+}
+
     </style>
 </head>
 <body>
     <div class="admin-wrapper">
-    <aside class="sidebar">
-        <div class="admin-logo">BlueWave <span>Admin</span></div>
-        <ul class="sidebar-nav">
-            <li><a href="dashboard.php" class="active"><span>Dashboard</span></a></li>
-            <li><a href="view_bookings.php"><span>Bookings</span></a></li>
-            <li><a href="view_rooms.php"><span>Rooms</span></a></li>
-            <li><a href="view_users.php"><span>Users</span></a></li>
-            <li><a href="manage_complaints.php"><span>Complaints</span></a></li>
-            <li><a href="add-room.php"><span>Add rooms</span></a></li>
-        </ul>
-        <div class="sidebar-footer">
-            <a href="login.php">Log Out</a>
-        </div>
-    </aside>
+   <aside class="sidebar">
+    <div class="admin-logo">BlueWave <span>Admin</span></div>
+    <ul class="sidebar-nav">
+        <li><a href="dashboard.php" class="active">📊<span>Dashboard</span></a></li>
+        <li><a href="view_bookings.php">📅<span>Bookings</span></a></li>
+        <li><a href="view_rooms.php">🛏️<span>Rooms</span></a></li>
+        <li><a href="view_users.php">👥<span>Users</span></a></li>
+        <li><a href="manage_complaints.php">📋<span>Complaints</span></a></li>
+        <li><a href="add-room.php">➕<span>Add rooms</span></a></li>
+    </ul>
+    <div class="sidebar-footer">
+        <a href="logout.php">🚪<span>Log Out</span></a>
+    </div>
+</aside>
 
     <main class="main-content">
         <header class="top-header">

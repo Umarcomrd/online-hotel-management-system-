@@ -376,17 +376,36 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         .btn-submit:hover { background: var(--gold); color: var(--navy-deep); }
  
         /* Responsive */
-        @media (max-width: 992px) {
-            .main-content { margin-left: 0; padding: 30px 20px; }
-            .sidebar { display: none; } /* Consider changing to mobile toggle if needed later */
-        }
-        @media (max-width: 768px) {
-            .form-grid { grid-template-columns: 1fr; }
-            .form-grid .full { grid-column: 1; }
-            .card-body { padding: 24px 20px; }
-            .form-footer { flex-direction: column; }
-            .btn-cancel, .btn-submit { width: 100%; justify-content: center; }
-        }
+       
+       @media (max-width: 768px) {
+    .sidebar { 
+        width: 70px; 
+        padding: 25px 10px; 
+    }
+    .sidebar-nav span, .admin-logo, .sidebar-footer span { 
+        display: none; 
+    }
+    .sidebar-nav a, .sidebar-footer a {
+        justify-content: center;
+        font-size: 1.3rem;
+    }
+    .main-content { 
+        margin-left: 70px; 
+        width: calc(100% - 70px); 
+        padding: 20px;
+    }
+    .metrics-grid {
+        grid-template-columns: 1fr;
+    }
+    .top-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+    .search-bar {
+        width: 100%;
+    }
+}
     </style>
 </head>
 <body>
@@ -394,15 +413,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <aside class="sidebar">
     <div class="admin-logo">BlueWave <span>Admin</span></div>
     <ul class="sidebar-nav">
-        <li><a href="dashboard.php">Dashboard</a></li>
-        <li><a href="view_bookings.php">Bookings</a></li>
-        <li><a href="view_rooms.php">Rooms</a></li>
-        <li><a href="view_users.php">Users</a></li>
-        <li><a href="manage_complaints.php">Complaints</a></li>
-        <li><a href="add-room.php" class="active">Add Rooms</a></li>
+        <li><a href="dashboard.php">📊<span>Dashboard</span></a></li>
+        <li><a href="view_bookings.php">📅<span>Bookings</span></a></li>
+        <li><a href="view_rooms.php">🛏️<span>Rooms</span></a></li>
+        <li><a href="view_users.php">👥<span>Users</span></a></li>
+        <li><a href="manage_complaints.php">📋<span>Complaints</span></a></li>
+        <li><a href="add-room.php" class="active">➕<span>Add rooms</span></a></li>
     </ul>
     <div class="sidebar-footer">
-        <a href="logout.php">Log Out</a>
+        <a href="logout.php">🚪<span>Log Out</span></a>
     </div>
 </aside>
  
