@@ -704,7 +704,9 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
     // Hamburger
     document.getElementById('hamburger').addEventListener('click', function(){
         document.getElementById('navLinks').classList.toggle('open');
+        
     });
+
 </script>
 
 </body>

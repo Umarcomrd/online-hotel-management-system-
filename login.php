@@ -281,7 +281,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <header>
     <a href="index.php" class="nav-logo">Blue<span>Wave</span></a>
-    <a href="index.php" class="back-home">← Back to Home</a>
+  
+    
 </header>
 
 <div class="main-container">

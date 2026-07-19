@@ -22,6 +22,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     
     // Secret registration code — change this to whatever you want
+
+
+
+
+
+    
     $valid_code = 'BLUEWAVE2024';
     
 
@@ -552,8 +558,47 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         });
         label.textContent = val.length ? (labels[score - 1] || '') : '';
         label.style.color = score ? colors[score - 1] : '';
+
+
+
+
+        const product1 = {
+            name: 'umar abubakar',
+            age: 23,
+            email: 'fashiondesign1176@gmail.com',
+            product2 : {
+                price: '$203'
+            },
+            main : function sales(){
+                console.log('function inside an object');
+            }
+        }
+        product1.age = 29;
+        console.log(product1.age);
     }
-</script>
+    const a = 212;
+    const b = 23;
+    const pro = 'you little face of shit we are fucked';
+    const lose = 'we just lose fucking';
+    const count = 250000 + 250000;
+    
+
+if(a > b){
+    console.log(`Adam ${pro}`);
+    console.log(`${lose} $${count}`);
+} else{
+    console.log('lie');
+};
+
+function student(name, email, num){
+  console.log(name);
+  console.log(email);
+  console.log(num);
+}
+student('umar', ' email@', 26537);
+
+
+</script> 
 
 </body>
 </html>

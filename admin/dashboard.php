@@ -5,6 +5,7 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
 
+
 // Total rooms
 $stmt = $pdo->query("SELECT COUNT(*) AS total_rooms FROM rooms");
 $total_rooms = $stmt->fetch(PDO::FETCH_ASSOC)['total_rooms'];
@@ -21,13 +22,13 @@ $total_users = $stmt->fetch(PDO::FETCH_ASSOC)['total_users'];
 
 // Total bookings
 
-$stmt = $pdo->query("SELECT COUNT(*) AS total_bookings FROM bookingss");
+$stmt = $pdo->query("SELECT COUNT(*) AS total_bookings FROM bookings");
 $total_bookings = $stmt->fetch(PDO::FETCH_ASSOC)['total_bookings'];
 
 // Fetch the 7 most recent bookings
   
 $stmt = $pdo->query(" SELECT guest_name, room_id, status, created_at
-    FROM bookingss
+    FROM bookings
     ORDER BY created_at DESC
     LIMIT 7");
 $recent_activity = $stmt->fetchAll(PDO::FETCH_ASSOC);

@@ -224,7 +224,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <header>
     <a href="register.php" class="nav-logo">Blue<span>Wave</span></a>
-    <a href="./admin/register.php" class="back-home">← Admin login</a>
+    
+    
 </header>
 
 <div class="main-container">
