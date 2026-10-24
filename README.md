@@ -27,7 +27,7 @@ A web-based hotel management system built with PHP and MySQL, allowing users to 
 
 1. Clone the repository into your XAMPP `htdocs` folder:
    ```bash
-   git clone https://github.com/Umarcomrd/online-hotel-management-system-.git
+   git clone https://github.com/Umarcomrd/online-hotel-management-system-
    ```
 
 2. Move/rename the project into your XAMPP web root if needed:
