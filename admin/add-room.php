@@ -377,7 +377,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
  
         /* Responsive */
        
-       @media (max-width: 768px) {
+       @media (min-width: 577px) and (max-width: 768px) {
     .sidebar { 
         width: 70px; 
         padding: 25px 10px; 
@@ -404,6 +404,27 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
     .search-bar {
         width: 100%;
+    }
+}
+
+@media (max-width: 576px) {
+    .form-grid {
+        grid-template-columns: 1fr !important;
+        gap: 15px !important;
+    }
+    .card-body {
+        padding: 20px 15px !important;
+    }
+    .form-footer {
+        flex-direction: column !important;
+        align-items: stretch !important;
+        gap: 10px !important;
+    }
+    .form-footer .btn-submit,
+    .form-footer .btn-cancel {
+        width: 100% !important;
+        justify-content: center !important;
+        text-align: center !important;
     }
 }
     </style>

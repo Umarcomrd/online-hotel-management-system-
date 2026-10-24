@@ -21,6 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     
     
    
+    
     if (empty($full_name) || empty($email) || empty($phone_number) || empty($password)) {
         $error = "All fields are required.";
     } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
@@ -29,6 +30,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $error = "Password must be at least 6 characters.";
     } elseif ($password !== $confirm_pass) {
         $error = "Passwords do not match.";
+    } elseif ($phone_number && !preg_match('/^\+?\d{10,11}$/', $phone_number)) {
+        $error = "Please enter a valid phone number (10-11 digits).";
     } else {
         
         $stmt = $pdo->prepare("SELECT id FROM people WHERE email = ?");

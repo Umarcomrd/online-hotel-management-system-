@@ -270,7 +270,7 @@ textarea.form-control {
     border-left: 4px solid #c62828;
 }
 
-       @media (max-width: 768px) {
+       @media (min-width: 577px) and (max-width: 768px) {
     .sidebar { 
         width: 70px; 
         padding: 25px 10px; 
@@ -297,6 +297,23 @@ textarea.form-control {
     }
     .search-bar {
         width: 100%;
+    }
+}
+
+@media (max-width: 576px) {
+    .edit-container {
+        padding: 20px 15px !important;
+    }
+    .image-preview {
+        height: 180px !important;
+    }
+    .button-row {
+        flex-direction: column !important;
+    }
+    .button-row .btn-save,
+    .button-row .btn-back {
+        width: 100% !important;
+        text-align: center !important;
     }
 }
 </style>

@@ -28,7 +28,7 @@
     color: var(--gold);
 }
 
-       @media (max-width: 768px) {
+       @media (min-width: 577px) and (max-width: 768px) {
     .sidebar { 
         width: 70px; 
         padding: 25px 10px; 
@@ -55,6 +55,14 @@
     }
     .search-bar {
         width: 100%;
+    }
+}
+
+@media (max-width: 576px) {
+    .main-content > div[style*="display:flex"],
+    .main-content > div[style*="display: flex"] {
+        flex-direction: column !important;
+        gap: 15px !important;
     }
 }
     </style>

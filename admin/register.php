@@ -28,7 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 
     
-    $valid_code = 'BLUEWAVE2024';
+    $valid_code = 'bluewave2024';
     
 
     if (empty($full_name) || empty($email) || empty($phone_number) || empty($password) || empty($admin_code)) {
@@ -39,11 +39,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $error = "Password must be at least 6 characters.";
     } elseif ($password !== $confirm_pass) {
         $error = "Passwords do not match.";
-
     } elseif ($admin_code !== $valid_code) {
         $error = "Invalid admin registration code.";
     } else {
-
+        
         // Check if email already exists
         $stmt = $pdo->prepare("SELECT id FROM officials WHERE email = ?");
         $stmt->execute([$email]);

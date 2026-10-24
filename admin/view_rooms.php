@@ -264,7 +264,7 @@ try {
  
         .modal-confirm:hover { background: #a00; }
 
-       @media (max-width: 768px) {
+       @media (min-width: 577px) and (max-width: 768px) {
     .sidebar { 
         width: 70px; 
         padding: 25px 10px; 
@@ -291,6 +291,20 @@ try {
     }
     .search-bar {
         width: 100%;
+    }
+}
+
+@media (max-width: 576px) {
+    .main-content > div[style*="display:flex"],
+    .main-content > div[style*="display: flex"] {
+        flex-direction: column !important;
+        align-items: stretch !important;
+        gap: 15px !important;
+    }
+    .main-content > div[style*="display:flex"] a,
+    .main-content > div[style*="display: flex"] a {
+        text-align: center !important;
+        width: 100% !important;
     }
 }
  

@@ -58,7 +58,7 @@ try {
         }
 
       
-       @media (max-width: 768px) {
+       @media (min-width: 577px) and (max-width: 768px) {
     .sidebar { 
         width: 70px; 
         padding: 25px 10px; 
@@ -85,6 +85,31 @@ try {
     }
     .search-bar {
         width: 100%;
+    }
+}
+
+@media (max-width: 576px) {
+    .directory-grid {
+        grid-template-columns: 1fr !important;
+        gap: 15px !important;
+    }
+    .directory-grid > div {
+        flex-direction: column !important;
+        align-items: center !important;
+        text-align: center !important;
+        padding: 25px 15px !important;
+    }
+    .directory-grid > div > div:first-of-type {
+        margin: 0 auto 10px !important;
+    }
+    .directory-grid > div > div:nth-of-type(2) {
+        width: 100% !important;
+        margin-bottom: 15px !important;
+    }
+    .directory-grid > div > a {
+        margin: 0 auto !important;
+        width: 100% !important;
+        text-align: center !important;
     }
 }
     </style>

@@ -202,7 +202,7 @@ if (isset($nameParts[1])) {
 
         /* Responsive */
       
-       @media (max-width: 768px) {
+       @media (min-width: 577px) and (max-width: 768px) {
     .sidebar { 
         width: 70px; 
         padding: 25px 10px; 
@@ -229,6 +229,33 @@ if (isset($nameParts[1])) {
     }
     .search-bar {
         width: 100%;
+    }
+}
+
+@media (max-width: 576px) {
+    .profile-top-section {
+        flex-direction: column !important;
+        align-items: center !important;
+        text-align: center !important;
+        padding: 0 20px 20px !important;
+        gap: 15px !important;
+    }
+    .profile-avatar {
+        margin-top: -60px !important;
+    }
+    .profile-body {
+        grid-template-columns: 1fr !important;
+        gap: 20px !important;
+        padding: 20px !important;
+    }
+    .profile-actions {
+        flex-direction: column !important;
+        gap: 15px !important;
+        padding: 20px !important;
+    }
+    .profile-actions .btn {
+        width: 100% !important;
+        text-align: center !important;
     }
 }
     </style>
@@ -298,10 +325,14 @@ if (isset($nameParts[1])) {
                     </div>
                 </div>
 
-                <div>
                     <div class="info-group">
                         <label>User ID</label>
                         <div class="info-value">#<?= htmlspecialchars($user['id']) ?></div>
+                    </div>
+
+                    <div class="info-group">
+                        <label>Phone Number</label>
+                        <div class="info-value"><?= htmlspecialchars($user['phone_number'] ?? 'N/A') ?></div>
                     </div>
                 </div>
             </div>

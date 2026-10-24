@@ -121,7 +121,8 @@ $bookings = $stmt->fetchAll(PDO::FETCH_ASSOC);
             background: #ffffff; 
             border-radius: 4px; 
             box-shadow: 0 4px 12px rgba(0,0,0,0.05); 
-            overflow: hidden;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
         }
 
         .bookings-table {
@@ -231,7 +232,7 @@ $bookings = $stmt->fetchAll(PDO::FETCH_ASSOC);
             color: #c9a84c; /* Gold highlight shift */
         }
 
-       @media (max-width: 768px) {
+       @media (min-width: 577px) and (max-width: 768px) {
     .sidebar { 
         width: 70px; 
         padding: 25px 10px; 
@@ -258,6 +259,20 @@ $bookings = $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
     .search-bar {
         width: 100%;
+    }
+}
+
+@media (max-width: 576px) {
+    .page-header-actions {
+        flex-direction: column !important;
+        align-items: stretch !important;
+        gap: 15px !important;
+    }
+    .search-form {
+        width: 100% !important;
+    }
+    .search-input {
+        width: 100% !important;
     }
 }
     </style>
