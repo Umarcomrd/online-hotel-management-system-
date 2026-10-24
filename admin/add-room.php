@@ -545,7 +545,31 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </div>
 </main>
  
+
+
+<button class =  "js-click"   > button one         </button>
+<button class =  "js-secondclick" >button two  </button>
 <script>
+
+
+const button1 = document.querySelector('.js-click');
+const button2 = document.querySelector('.js-secondclick');
+
+button1.addEventListener('click', () => {
+    console.log('hi');
+});
+
+button2.addEventListener('click', () => {
+    console.log('hello');
+});
+
+
+
+
+
+
+
+
     const input       = document.getElementById('imageInput');
     const zone        = document.getElementById('uploadZone');
     const previewWrap = document.getElementById('preview-wrap');

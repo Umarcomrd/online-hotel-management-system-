@@ -3,13 +3,17 @@
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
+
     // 1. Include database configuration
     require_once '../confiq.php'; 
 
+    
 // 2. Handle Search Filter
 $search = isset($_GET['search']) ? trim($_GET['search']) : '';
 
+
 if (!empty($search)) {
+
     // Search query matching guest name using safe prepared statements
     $query = "SELECT b.*, r.room_name 
               FROM bookingss  
@@ -19,6 +23,7 @@ if (!empty($search)) {
     $stmt = $pdo->prepare($query);
     $stmt->execute(["%$search%"]);
 } else {
+
     // Fetch all bookings if search is empty
     $query = "SELECT b.*, r.room_name 
               FROM bookingss b 

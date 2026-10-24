@@ -22,13 +22,13 @@ $total_users = $stmt->fetch(PDO::FETCH_ASSOC)['total_users'];
 
 // Total bookings
 
-$stmt = $pdo->query("SELECT COUNT(*) AS total_bookings FROM bookings");
+$stmt = $pdo->query("SELECT COUNT(*) AS total_bookings FROM bookingss");
 $total_bookings = $stmt->fetch(PDO::FETCH_ASSOC)['total_bookings'];
 
 // Fetch the 7 most recent bookings
   
 $stmt = $pdo->query(" SELECT guest_name, room_id, status, created_at
-    FROM bookings
+    FROM bookingss
     ORDER BY created_at DESC
     LIMIT 7");
 $recent_activity = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -747,6 +747,14 @@ $recent_activity = $stmt->fetchAll(PDO::FETCH_ASSOC);
     searchModal.addEventListener('click', function(e) {
         if (e.target === this) closeSearchModal();
     });
+
+
+
+    setTimeout(function() {
+        console.log('Timeout')
+    }, 3000);
+
 </script>
+<button ></button>
 </body>
 </html>

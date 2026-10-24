@@ -21,7 +21,7 @@ try {
          FROM people
          WHERE full_name LIKE ? OR email LIKE ?
          ORDER BY full_name ASC
-         LIMIT 20"
+         LIMIT 20" 
     );
     $like = "%$q%";
     $stmt->execute([$like, $like]);
